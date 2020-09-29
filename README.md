@@ -1,6 +1,8 @@
 # Object Detection for Amenity Detection
 ### Use of CNNs and transfer learning to detect objects in images for vacation rental listings
 
+![Optional Text](../master/images/project_overview.PNG)
+
 **Notebooks:**
 
 | Item |      Notebook     |    Environment    |
