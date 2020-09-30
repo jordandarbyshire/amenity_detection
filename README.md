@@ -49,3 +49,14 @@ This project made use of pre-trained models for object detection. The benefit is
 |  SSD MobileNet V2 |      VGG16 (FPN)     | Works well on large objects                        | Doesn't fare well on small objects            |
 |     RetinaNet     |    ResNet50 (FPN)    | Works well on multiple scales | None                                          |
 |       YOLOv3      | Darknet53 (FPN-like) | Very fast, works well on small objects             | Doesn't fare well on medium and large objects |
+
+### Results
+The RetinaNet model performed a little better than SSD MobileNet with an estimated accuracy score of 35% (versus 30%). While not as high as my initial expectations, if you consider the complexity of my dataset (15 classes, multiple classes in each image, objects of all scales) then this score is acceptable for my project.
+
+![Optional Text](../master/images/model_results.PNG)
+
+Obviously, in order for this project to be run successfully on a vacation rental website the accuracy needs to be improved considerably.
+
+### Future Steps
+I would like to get the YOLOv3 system up and running for real-time detection on
+videos rather than images. I think this would be a really neat feature for a vacation rental site to have, where a user could simply walk around their property with a cell phone in hand, and a list of amenities could be generated.
