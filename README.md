@@ -11,6 +11,14 @@
 |:----:|:-----------------:|:-----------------:|
 |   1  | amenity_detection | Base + Tensorflow |
 
+**Libraries:**
+* Numpy
+* Pandas
+* OpenCV
+* Matplotlib
+* TensorFlow
+* Keras
+
 ## **Project Overview**
 ### Inspiration
 The inspiration for this project comes from a [Medium article](https://medium.com/airbnb-engineering/amenity-detection-and-beyond-new-frontiers-of-computer-vision-at-airbnb-144a4441b72e) that highlighted an Airbnb computer vision project where they aimed to detect room type by the types of objects identified in their listing photos. Airbnb's motivation was to uphold high quality listings on their site.
@@ -28,4 +36,16 @@ Any hotel or vacation rental site such as Airbnb, Vrbo, Hotels.com, TripAdvisor,
 ### Dataset
 The dataset I used for this project is [Open Images V4](https://storage.googleapis.com/openimages/web/factsfigures_v4.html), which contains 9 million images spanning 600 classes. It is the largest existing dataset with object location annotations, which are bounding boxes drawn by humans to ensure accuracy and consistency. The images often show complex scenes with several objects (8 annotated objects per image on average).
 
-I chose this dataset due to the number of classes applicable to the business problem. The inclusion of the bounding box "labels" was also a bonus. I chose the most relevant 20 classes based on amenities that would be desirable to the consumer such as Swimming pool, Televison, Dining room table, fireplace, bathtub.
+I chose this dataset due to the number of classes applicable to the business problem. The inclusion of the bounding box "labels" was also a bonus. I chose the most relevant 20 classes based on amenities that would be desirable to the consumer such as swimming pool, televison, dining room table, fireplace, bathtub.
+
+### Building the Custom Dataset
+The biggest challenge with starting an Object Detection project is putting together a custom dataset to run models. Since the Open Images dataset is so massive, it would be a monumental task to download the full dataset (over 0.5 TB in size) and pick through the data to get what I needed. The Open Images website does not provide an option to download select classes of images. Fortunately, I discovered that there are a few open source solutions to this problem. I ended up using the [OIDv4 Toolkit](https://github.com/EscVM/OIDv4_ToolKit) to download the desired image classes.
+
+### Modeling
+This project made use of pre-trained models for object detection. The benefit is to leverage features and weights from previously trained models, which are trained on similar datasets. In the case of computer vision, low-level features such as edges, shapes, corners and intensity can be shared among tasks (transfer learning).
+
+| Pre-trained model |   Feature extractor  |                        Pros                        |                      Cons                     |
+|:-----------------:|:--------------------:|:--------------------------------------------------:|:---------------------------------------------:|
+|  SSD MobileNet V2 |      VGG16 (FPN)     | Works well on large objects                        | Doesn't fare well on small objects            |
+|     RetinaNet     |    ResNet50 (FPN)    | Works well on multiple scales | None                                          |
+|       YOLOv3      | Darknet53 (FPN-like) | Very fast, works well on small objects             | Doesn't fare well on medium and large objects |
