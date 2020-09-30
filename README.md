@@ -1,3 +1,5 @@
+[![HitCount](http://hits.dwyl.com/jordandarbyshire/amenity_detection.svg)](http://hits.dwyl.com/jordandarbyshire/amenity_detection)
+
 # Using Object Detection to Classify Amenities in Vacation Rental Listings
 ### Use of CNNs and transfer learning to detect objects in images
 
