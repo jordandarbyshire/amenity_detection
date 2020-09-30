@@ -33,7 +33,7 @@ Users of the website will search for properties based on their desired amenities
 ### Potential Applications
 Any hotel or vacation rental site such as Airbnb, Vrbo, Hotels.com, TripAdvisor, etc.
 
-### Dataset
+## Dataset
 The dataset I used for this project is [Open Images V4](https://storage.googleapis.com/openimages/web/factsfigures_v4.html), which contains 9 million images spanning 600 classes. It is the largest existing dataset with object location annotations, which are bounding boxes drawn by humans to ensure accuracy and consistency. The images often show complex scenes with several objects (8 annotated objects per image on average).
 
 I chose this dataset due to the number of classes applicable to the business problem. The inclusion of the bounding box "labels" was also a bonus. I chose the most relevant 20 classes based on amenities that would be desirable to the consumer such as swimming pool, televison, dining room table, fireplace, bathtub.
@@ -41,7 +41,7 @@ I chose this dataset due to the number of classes applicable to the business pro
 ### Building the Custom Dataset
 The biggest challenge with starting an Object Detection project is putting together a custom dataset to run models. Since the Open Images dataset is so massive, it would be a monumental task to download the full dataset (over 0.5 TB in size) and pick through the data to get what I needed. The Open Images website does not provide an option to download select classes of images. Fortunately, I discovered that there are a few open source solutions to this problem. I ended up using the [OIDv4 Toolkit](https://github.com/EscVM/OIDv4_ToolKit) to download the desired image classes.
 
-### Modeling
+## Modeling
 This project made use of pre-trained models for object detection. The benefit is to leverage features and weights from previously trained models, which are trained on similar datasets. In the case of computer vision, low-level features such as edges, shapes, corners and intensity can be shared among tasks (transfer learning).
 
 | Pre-trained model |   Feature extractor  |                        Pros                        |                      Cons                     |
@@ -50,13 +50,13 @@ This project made use of pre-trained models for object detection. The benefit is
 |     RetinaNet     |    ResNet50 (FPN)    | Works well on multiple scales | None                                          |
 |       YOLOv3      | Darknet53 (FPN-like) | Very fast, works well on small objects             | Doesn't fare well on medium and large objects |
 
-### Results
+## Results
 The RetinaNet model performed a little better than SSD MobileNet with an estimated accuracy score of 35% (versus 30%). While not as high as my initial expectations, if you consider the complexity of my dataset (15 classes, multiple classes in each image, objects of all scales) then this score is acceptable for my project.
 
 ![Optional Text](../master/images/model_results.PNG)
 
 Obviously, in order for this project to be run successfully on a vacation rental website the accuracy needs to be improved considerably.
 
-### Future Steps
+## Future Steps
 I would like to get the YOLOv3 system up and running for real-time detection on
 videos rather than images. I think this would be a really neat feature for a vacation rental site to have, where a user could simply walk around their property with a cell phone in hand, and a list of amenities could be generated.
